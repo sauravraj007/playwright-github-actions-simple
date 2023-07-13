@@ -1,6 +1,22 @@
 name: "Tests: E2E"
 on:
   workflow_dispatch:
+     inputs:
+      notify:
+        description: Post the results to webex
+        required: true
+        default: true
+        type: boolean
+      retry:
+        description: Rerun required for failed test cases in the first try
+        required: true
+        default: true
+        type: boolean
+      environment:
+        description: Test Application Environment
+        required: true
+        default: ci
+        type: string
   push:
     branches: 
       - dev
