@@ -56,6 +56,12 @@ jobs:
           echo $retry
           echo "${command[@]}"
           HOME=/root yarn "${command[@]}"
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          path: |
+            playwright-report/**/*
+            artifacts/**/**
       - name: Post Notification
         run: |
           message="#### This is a test message"
