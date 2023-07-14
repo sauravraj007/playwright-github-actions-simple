@@ -46,6 +46,7 @@ jobs:
             const retry = ${{inputs.retry}}
             console.log(`Rettry=${retry}`)
       - name: Run tests
+        shell: bash
         run: |
           command=("yarn test")
           retry=${{inputs.retry}}
