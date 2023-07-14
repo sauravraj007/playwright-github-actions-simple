@@ -51,7 +51,7 @@ jobs:
           command=("yarn test")
           retry=${{inputs.retry}}
           if [ "$retry" = true ] ; then
-            command += ("--retries=2")
+            command+=("--retries=2")
           fi
           echo $retry
           echo "${command[@]}"
