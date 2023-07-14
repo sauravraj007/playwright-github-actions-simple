@@ -65,5 +65,7 @@ jobs:
       - name: Post Notification
         run: |
           message="#### This is a test message"
-          curl -X POST --data-raw "{\"markdown\": \"$message\"}" -H "Content-Type:application/json" \
-          https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svNTIyMmE3NDEtNTI0Zi00ODM0LWJmMWMtYjg5NTQzMWE1NTNi
+          WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          echo $WORKFLOW_URL
+          # curl -X POST --data-raw "{\"markdown\": \"$message\"}" -H "Content-Type:application/json" \
+          # https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svNTIyMmE3NDEtNTI0Zi00ODM0LWJmMWMtYjg5NTQzMWE1NTNi
