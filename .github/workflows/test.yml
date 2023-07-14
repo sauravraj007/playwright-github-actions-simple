@@ -41,7 +41,7 @@ jobs:
           msg="<h2>PIAM E2E Regression - Cross Browser Tests </h2><hr><b>Test Status : &#10060; FAILED </b><br/> \
           <b><a href=http://144.254.67.217:3000/d/05jLPAy4k/piam-e2e-integration-tests?orgId=1&var-RunID'${BRANCH_NAME}'/'${BUILD_NUMBER}'&from=now-7d&to=now>Grafana Dashboard</a></b><br/> \
           <b><a href='$WORKFLOW_URL'>Workflow Run</a></b> \
-          <pre>| <b>Test Summary</b>  |  Total : ${summary.totalCount}  |  Failures: ${summary.failCount}  |  Skipped: ${summary.skipCount}  | Passed: ${summary.passCount}  |</pre> \
+          <pre>| <b>Test Summary</b>  |  Total : ${summary.totalCount}  |  Failures: ${summary.failCount}  |  Skipped: ${summary.skipCount}  | Passed: ${summary.passCount}  |</pre>"
           echo "$msg"
           # curl -X POST --data-raw "{\"markdown\": \"$message\"}" -H "Content-Type:application/json" \
           # https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svNTIyMmE3NDEtNTI0Zi00ODM0LWJmMWMtYjg5NTQzMWE1NTNi
