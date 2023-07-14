@@ -58,7 +58,7 @@ jobs:
           HOME=/root yarn "${command[@]}"
       - name: Post Notification
         run: |
-          message='#### This is a test message"
+          message="#### This is a test message"
           curl -X POST --data-raw '{"markdown":"${message}"}' -H "Content-Type:application/json" https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svOWQzMDUzYTgtOGEwNS00NjkwLTlkOWYtYmE2MjUyNDg0MjE2
           curl -X POST --data-raw '{"markdown":"${message}"}' -H "Content-Type:application/json" https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svYTU1NDc0MTYtM2JiMi00YTNhLTg1MWEtZWQxN2NhZTA0ZWI5
          
