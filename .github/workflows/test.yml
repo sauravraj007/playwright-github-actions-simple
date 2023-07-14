@@ -48,12 +48,12 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          command=("yarn test")
+          command=("test")
           retry=${{inputs.retry}}
           if [ "$retry" = true ] ; then
             command+=("--retries=2")
           fi
           echo $retry
           echo "${command[@]}"
-          HOME=/root "${command[@]}"
+          HOME=/root yarn "${command[@]}"
          
