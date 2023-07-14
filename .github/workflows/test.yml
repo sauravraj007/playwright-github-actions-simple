@@ -40,4 +40,13 @@ jobs:
       - name: Install dependencies
         run: yarn
       - name: Run tests
-        run: HOME=/root yarn test 
+        run: |
+          command = ("HOME=/root yarn test")
+          retry = ${{inputs.retry}}
+          if [ "$retry" = true ] ; then
+            command += ("--retries=2")
+          fi
+          echo $retry
+          echo $command
+          "${command[@]}"
+         
