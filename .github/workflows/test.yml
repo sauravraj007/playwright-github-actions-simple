@@ -57,6 +57,7 @@ jobs:
           echo "${command[@]}"
           HOME=/root yarn "${command[@]}"
       - name: Test Summary
+        id: test_summary
         uses: test-summary/action@v2
         with:
           paths: "playwright-report/xunit.xml"
@@ -70,10 +71,10 @@ jobs:
       - name: Post Notification
         run: |
           message="#### This is a test message"
-          totalCount=5
-          failCount=1
-          skipCount=0
-          passCount=4
+          totalCount=${{steps.test_summary.outputs.total}}
+          failCount=${{steps.test_summary.outputs.failed}}
+          skipCount=${{steps.test_summary.outputs.skipped}}
+          passCount=${{steps.test_summary.outputs.passed}}
           WORKFLOW_URL="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
           echo $WORKFLOW_URL
           msg="<h2>PIAM E2E Regression - Cross Browser Tests </h2><hr><b>Test Status : &#10060; FAILED </b><br/> \
