@@ -51,6 +51,7 @@ jobs:
           fi
           echo $retry
           echo "${command[@]}"
+          echo "GITHUB_REF_NAME=$GITHUB_REF_NAME GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER GITHUB_RUN_ID=$GITHUB_RUN_ID"
           HOME=/root npx playwright "${command[@]}"
       - name: Test Summary
         id: test_summary
