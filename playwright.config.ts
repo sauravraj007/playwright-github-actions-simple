@@ -28,7 +28,7 @@ export default defineConfig({
         outputFile: 'playwright-report/xunit.xml',
       },
     ],
-    [process.env.CI ? 'github' : 'list'],
+    [process.env.GITHUB_REPORTER ? 'github' :'list'],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
