@@ -9,7 +9,7 @@ test('Test Login Sauce demo', async ({page}) => {
 
     const demoPage = new SauceDemoPage(page);
     await demoPage.goto();
-    await expect(await demoPage.getTitle()).toBe('Swag Labs');
+    await expect(await demoPage.getTitle()).toBe('Swag Labss');
     await demoPage.validLogin(username, password);
     await expect(await demoPage.page).toHaveURL(/.*inventory/);
 })
