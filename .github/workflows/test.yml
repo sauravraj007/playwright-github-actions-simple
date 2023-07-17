@@ -95,3 +95,4 @@ jobs:
           echo "$msg"
           # curl -X POST --data-raw "{\"markdown\": \"$message\"}" -H "Content-Type:application/json" \
           # https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svNTIyMmE3NDEtNTI0Zi00ODM0LWJmMWMtYjg5NTQzMWE1NTNi
+        if: inputs.notify
