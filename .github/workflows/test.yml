@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: 18
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Run tests
         shell: bash
         run: |
@@ -51,7 +51,7 @@ jobs:
           fi
           echo $retry
           echo "${command[@]}"
-          HOME=/root yarn "${command[@]}"
+          HOME=/root npx playwright "${command[@]}"
       - name: Test Summary
         id: test_summary
         uses: test-summary/action@v2
