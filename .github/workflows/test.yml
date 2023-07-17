@@ -17,6 +17,10 @@ on:
         required: true
         default: ci
         type: string
+      github:
+        description: Use github reporter
+        default: false
+        type: boolean
   push:
     branches: 
       - dev
@@ -26,6 +30,7 @@ on:
       - main
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
+  GITHUB_REPORTER : ${{inputs.}}
 jobs:
   e2erun:  
     name: Run end-to-end tests
