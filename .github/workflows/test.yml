@@ -31,6 +31,7 @@ on:
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
   GITHUB_REPORTER : ${{inputs.github}}
+  CI_RUN_ID: $GITHUB_REF_NAME/$GITHUB_RUN_NUMBER
 jobs:
   e2erun:  
     name: Run end-to-end tests
@@ -57,6 +58,7 @@ jobs:
           echo $retry
           echo "${command[@]}"
           echo "GITHUB_REF_NAME=$GITHUB_REF_NAME GITHUB_RUN_NUMBER=$GITHUB_RUN_NUMBER GITHUB_RUN_ID=$GITHUB_RUN_ID"
+          echo $CI_RUN_ID
           HOME=/root npx playwright "${command[@]}"
       - name: Test Summary
         id: test_summary
