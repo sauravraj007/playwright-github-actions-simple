@@ -30,7 +30,7 @@ on:
       - main
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
-  GITHUB_REPORTER : ${{inputs.}}
+  GITHUB_REPORTER : ${{inputs.github}}
 jobs:
   e2erun:  
     name: Run end-to-end tests
