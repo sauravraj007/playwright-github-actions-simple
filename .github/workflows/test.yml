@@ -4,7 +4,7 @@ on:
     types:
       - opened
     branches:
-      - 'test'
+      - test
   workflow_dispatch:
      inputs:
       notify:
@@ -26,13 +26,7 @@ on:
         description: Use github reporter
         default: false
         type: boolean
-  push:
-    branches: 
-      - dev
-  pull_request:
-    types: [opened, synchronize, reopened, closed]
-    branches:
-      - main
+
 env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
   GITHUB_REPORTER : ${{inputs.github}}
