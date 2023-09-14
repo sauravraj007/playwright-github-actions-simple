@@ -35,6 +35,10 @@ env:
 jobs:
   e2erun:  
     name: Run end-to-end tests
+    strategy:
+      matrix:
+        project: ['chromium', 'firefox']
+      max-parallel: 1
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:v1.35.0-jammy
@@ -50,7 +54,7 @@ jobs:
       - name: Run tests
         shell: bash
         run: |
-          command=("test")
+          command=("test" "--project=${{ matrix.project }}")
           retry=${{inputs.retry}}
           if [ "$retry" = true ] ; then
             command+=("--retries=2")
@@ -74,6 +78,7 @@ jobs:
       - name: Upload artifacts
         uses: actions/upload-artifact@v3
         with:
+          name: report-${{ matrix.project }}
           path: |
             playwright-report/**/*
             artifacts/**/**
