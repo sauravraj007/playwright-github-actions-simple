@@ -110,3 +110,25 @@ jobs:
           # curl -X POST --data-raw "{\"markdown\": \"$message\"}" -H "Content-Type:application/json" \
           # https://webexapis.com/v1/webhooks/incoming/Y2lzY29zcGFyazovL3VzL1dFQkhPT0svNTIyMmE3NDEtNTI0Zi00ODM0LWJmMWMtYjg5NTQzMWE1NTNi
         if: inputs.notify
+  merge-and-upload:
+    name: 'Merge and Upload'
+    runs-on: ubuntu-latest
+    needs: ['e2erun']
+    steps:
+      - name: Download all reports from GitHub Actions Artifacts
+        uses: actions/download-artifact@v3
+      - name: Test Summary
+        id: test_summary
+        uses: test-summary/action@v2
+        with:
+          paths: './**/playwright-report/xunit.xml'
+      - name: 'Output'
+        run: |
+          totalCount=${{ steps.test_summary.outputs.total }}
+          failCount=${{ steps.test_summary.outputs.failed }}
+          skipCount=${{ steps.test_summary.outputs.skipped }}
+          passCount=${{ steps.test_summary.outputs.passed }}
+          echo $totalCount
+          echo $failCount
+          echo $skipCount
+          echo $passCount
