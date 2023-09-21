@@ -47,13 +47,12 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - id: set-matrix
-        run: echo "matrix={\"include\":[{\"project\":\"foo\",\"config\":\"Debug\"},{\"project\":\"bar\",\"config\":\"Release\"}]}" >> $GITHUB_OUTPUT
+        run: echo "matrix={\"project\":[\"chromium\",\"firefox\"]}" >> $GITHUB_OUTPUT
   e2erun:
     name: Run end-to-end tests (${{ matrix.project }})
     needs: setMatrix
     strategy:
-      matrix:
-        project: ${{ fromJSON(needs.setMatrix.outputs.matrix) }}
+      matrix: ${{ fromJSON(needs.setMatrix.outputs.matrix) }}
       max-parallel: 1
     runs-on: ubuntu-latest
     container:
