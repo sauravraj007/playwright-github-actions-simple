@@ -53,7 +53,7 @@ jobs:
     needs: setMatrix
     strategy:
       matrix:
-        project: ${{ fromJSON(needs.job1.outputs.matrix) }}
+        project: ${{ fromJSON(needs.setMatrix.outputs.matrix) }}
       max-parallel: 1
     runs-on: ubuntu-latest
     container:
