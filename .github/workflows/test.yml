@@ -21,6 +21,13 @@ on:
         description: Use github reporter
         default: false
         type: boolean
+      project:
+        description: playwright project
+        type: choice
+        options:
+          - chrome
+          - firefox
+          - all
   push:
     branches: 
       - dev
@@ -32,12 +39,13 @@ env:
   GITHUB_PR_NUMBER: ${{github.event.pull_request.number}}
   GITHUB_REPORTER : ${{inputs.github}}
   CI_RUN_ID: "${{github.ref_name}}/${{github.run_number}}"
+  projects: fromJson('["chromium", "firefox"]')
 jobs:
   e2erun:  
-    name: Run end-to-end tests
+    name: Run end-to-end tests (${{ matrix.project }})
     strategy:
       matrix:
-        project: ['chromium', 'firefox']
+        project: ${{ env.projects }}
       max-parallel: 1
     runs-on: ubuntu-latest
     container:
